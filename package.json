@@ -9,18 +9,23 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/adapter-mariadb": "^7.4.1",
+    "@prisma/adapter-planetscale": "^7.4.1",
     "@prisma/client": "^7.4.1",
+    "@tidbcloud/prisma-adapter": "^6.17.0",
     "axios": "^1.13.5",
     "classnames": "^2.5.1",
+    "dotenv": "^17.3.1",
     "next": "16.1.6",
     "next-auth": "^4.24.13",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "undici": "^7.22.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.33",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",

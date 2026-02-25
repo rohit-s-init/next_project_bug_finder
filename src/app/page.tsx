@@ -1,7 +1,14 @@
-import Image from "next/image";
+import prisma from "../../lib/prisma";
 
-export default function Home() {
+export default async function Home() {
+
+  const data = prisma.issue.findMany();
+
   return (
-    <div>Hello World</div>
+    <div>
+{(await data).map(val=>{
+  return <div>{JSON.stringify(val)}</div>
+})}
+    </div>
   );
 }
