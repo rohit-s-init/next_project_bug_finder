@@ -7,9 +7,9 @@ import { Theme, ThemePanel } from '@radix-ui/themes';
 import '../app/theme-config.css'
 
 const inter = Inter({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 
@@ -35,16 +35,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      
-      <Theme appearance="light" radius="medium">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Theme appearance="light" radius="medium">
+
           <NavBar />
           <main className="p-5">{children}</main>
-          <ThemePanel/>
-        </body>
-      </Theme>
+          {/* <ThemePanel/> */}
+        </Theme>
+
+      </body>
     </html>
   );
 }
