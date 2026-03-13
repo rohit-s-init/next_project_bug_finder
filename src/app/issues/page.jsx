@@ -1,5 +1,7 @@
 'use client'
 import { usePathname } from "next/navigation"
+import {Button} from '@radix-ui/themes';
+import Link from 'next/link'
 
 function IssuePage() {
 
@@ -8,7 +10,7 @@ function IssuePage() {
 
     return (
         <div>
-            {currentPath}
+            <Button> <Link href='/issues/new' >New Issue</Link>  </Button>
         </div>
     )
 }
