@@ -14,6 +14,7 @@ import { createIssueSchema } from '@/app/createIssueSchema';
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false
 });
+import Spinner from "../../components/spinner"
 
 interface IssueForm {
   title: string;
@@ -27,12 +28,14 @@ function NewIssuePage() {
   // console.log(register('title'));
   const router = useRouter();
   const [error, updateError] = useState<string>();
+  const [isSubmitting, updateIsSubmitting] = useState(false);
 
   return (
     <div className='max-w-xl'>
 
       <form onSubmit={handleSubmit(async (data) => {
 
+        updateIsSubmitting(true);
 
         const validation = createIssueSchema.safeParse(data);
 
@@ -43,6 +46,7 @@ function NewIssuePage() {
           console.log(messages);
           updateError((messages['title']?._errors[0]) || (messages['description']?._errors[0]));
           // Output: ["title is required", "description is required"]
+          updateIsSubmitting(false);
           return;
         }
 
@@ -57,6 +61,7 @@ function NewIssuePage() {
         } catch (error) {
           updateError("unexped error occured.");
         }
+        updateIsSubmitting(false);
       })} className='space-y-3'>
         <TextField.Root placeholder='Title' {...register('title')}>
         </TextField.Root>
@@ -82,7 +87,7 @@ function NewIssuePage() {
             </Callout.Root>
           </>}
         </div>
-        <Button>Submit New Isue</Button>
+        <Button disabled={isSubmitting}>Submit New Isue {isSubmitting && <Spinner />}</Button>
       </form>
 
 
